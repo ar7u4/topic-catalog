@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Metadata Viewer | CBA</title>
+  <link rel="icon" type="image/svg+xml" href="https://www.commbank.com.au/content/dam/commbank/commBank-logo.svg">
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.0/css/dataTables.dataTables.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- colResizable for column resizing -->
+  <script src="https://cdn.jsdelivr.net/npm/colresizable/colResizable-1.6.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <div class="header-bar">
+      <div class="header-left">
+        <div class="logo-box">
+          <img src="https://www.commbank.com.au/content/dam/commbank/commBank-logo.svg" alt="Commonwealth Bank Logo">
+        </div>
+        <span class="header-title">Topic Catalog</span>
+      </div>
+      <div class="header-right">
+        <span class="last-updated">Last Updated: 2025-05-06T11:50:05.839 GMT</span>
+        <button class="theme-toggle" title="Toggle dark mode">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="export-btn">Export</button>
+      </div>
+    </div>
+    <div class="header-bar-bottom"></div>
+    <div class="table-wrapper">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist" id="myTabs">
+        <li role="presentation" class="active"><a href="#topic" aria-controls="topic" role="tab" data-toggle="tab">Topic Catalog</a></li>
+        <li role="presentation"><a href="#product" aria-controls="product" role="tab" data-toggle="tab">AWS Table</a></li>
+        <li role="presentation"><a href="#client" aria-controls="client" role="tab" data-toggle="tab">Banksia Table</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="topic">
+          <table id="example" class="display">
+            <thead>
+              <tr>
+                <th>Topic Name</th>
+                <th>Platform</th>
+                <th>Project</th>
+                <!-- <th>Schema File Locations</th> -->
+                <th>Producer Team SPG</th>
+                <th>Producer Team Email</th>
+                <th>Consumer Team SPG</th>
+                <th>Consumer Team Email</th>
+                <th>Business Owner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Will be filled by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="product">
+          <!-- Will load aws.html here -->
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="client">
+          <!-- Will load banksia.html here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.datatables.net/2.3.0/js/dataTables.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+  <script>
+    $(function() {
+      // Theme switching
+      const themeToggle = document.querySelector('.theme-toggle');
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      // Check for saved theme preference or use system preference
+      const currentTheme = localStorage.getItem('theme') || 
+        (prefersDarkScheme.matches ? 'dark' : 'light');
+      
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+
+      // Bootstrap tabs
+      $('#myTabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+      });
+      // Load aws.html and banksia.html into tabs when shown
+      $('#myTabs a[href="#product"]').on('shown.bs.tab', function () {
+        $('#product').load('aws.html');
+      });
+      $('#myTabs a[href="#client"]').on('shown.bs.tab', function () {
+        $('#client').load('banksia.html');
+      });
+      // Topic Catalog table (AJAX)
+      $.getJSON('data.json', function(data) {
+        var rows = '';
+        if (data && data.length > 0) {
+          data.forEach(function(item) {
+            function na(val) {
+              return (val === undefined || val === null || val === "" || val === "#" || val === "# -") ? 'N/A' : val;
+            }
+            rows += '<tr>'
+              + '<td>' + na(item.topic_name) + '</td>'
+              + '<td>' + na(item.platform) + '</td>'
+              + '<td>' + na(item.project) + '</td>'
+              // + '<td>' + na(item.schema_file_locations) + '</td>'
+              + '<td>' + na(item.producer_team_spg) + '</td>'
+              + '<td>' + na(item.producer_team_email) + '</td>'
+              + '<td>' + na(item.consumer_team_spg) + '</td>'
+              + '<td>' + na(item.consumer_team_email) + '</td>'
+              + '<td>' + na(item.business_owner) + '</td>'
+              + '</tr>';
+          });
+        } else {
+          rows = '<tr><td colspan="8" class="text-center">No records found</td></tr>';
+        }
+        $('#example tbody').html(rows);
+        var dt = $('#example').DataTable({
+          responsive: false,
+          autoWidth: false,
+          language: {
+            emptyTable: "No records found",
+            zeroRecords: "No matching records found"
+          }
+        });
+        // Tooltip for all non-empty cells
+        $('#example tbody').on('mouseenter', 'td', function() {
+          var $cell = $(this);
+          var text = $cell.text();
+          if (text.trim() !== '') {
+            $cell.attr('title', text);
+          } else {
+            $cell.removeAttr('title');
+          }
+        });
+        // Column resize for each column
+        $('#example').colResizable({
+          liveDrag: true,
+          resizeMode: 'fit',
+          partialRefresh: true
+        });
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+        $('#example tbody').html('<tr><td colspan="8" class="text-center error-message">Error loading data. Please try again later.</td></tr>');
+        $('#example').DataTable({
+          responsive: false,
+          autoWidth: false
+        });
+      });
+    });
+  </script>
+</body>
+</html>

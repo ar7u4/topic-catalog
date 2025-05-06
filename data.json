@@ -1,0 +1,36 @@
+[
+    {
+      "topic_name": "Payments-Initiation-Webhook",
+      "platform": "Digital Banking",
+      "project": "Payments Modernisation",
+      "schema_file_locations": "https://schemas.bank.com/payments/initiation",
+      "producer_team_spg": "CBA_ES_PAYMENTS_TEAM",
+      "producer_team_email": "payments_team@cba.com.au",
+      "consumer_team_spg": "CBA_ES_NOTIFICATIONS_TEAM",
+      "consumer_team_email": "notifications@cba.com.au",
+      "business_owner": "Alex Thomson"
+    },
+    {
+      "topic_name": "Credit-Decision-Response",
+      "platform": "Credit Risk",
+      "project": "Credit Platform Upgrade",
+      "schema_file_locations": "https://schemas.bank.com/credit/decision",
+      "producer_team_spg": "CBA_ES_CREDIT_ENGINE",
+      "producer_team_email": "# -",
+      "consumer_team_spg": "CBA_ES_DECISION_ANALYTICS",
+      "consumer_team_email": "analytics_team@cba.com.au",
+      "business_owner": "Priya Mehta"
+    },
+    {
+    "topic_name": "Loan-Origination-Start",
+    "platform": "Lending",
+    "project": "Loan Platform Revamp",
+    "schema_file_locations": "https://schemas.bank.com/loans/start",
+    "producer_team_spg": "#",
+    "producer_team_email": "loans_app_team@cba.com.au",
+    "consumer_team_spg": "CBA_ES_DOCUMENT_GEN",
+    "consumer_team_email": "docgen@cba.com.au",
+    "business_owner": "Sara Li"
+    }
+  ]
+
