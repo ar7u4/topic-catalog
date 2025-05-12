@@ -1,0 +1,529 @@
+body {
+  background: #f6f7fa;
+}
+.card {
+  max-width: 1500px;
+  margin: 32px auto 0 auto;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 18px 32px 12px 32px;
+  flex-wrap: wrap;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.logo-box {
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-box img {
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+}
+.header-title {
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.last-updated {
+  color: #222;
+  font-size: 1rem;
+  margin-right: 4px;
+}
+.export-btn {
+  background: #FFCD00;
+  color: #111;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+  transition: background 0.15s;
+}
+.export-btn:hover {
+  background: #ffd900;
+}
+.header-bar-bottom {
+  height: 4px;
+  background: #FFCD00;
+  border-radius: 0 0 2px 2px;
+  width: 100%;
+}
+.table-wrapper {
+  padding: 0 60px 0 60px;
+  background: #fff;
+}
+.table-wrapper .nav-tabs {
+  margin-top: 24px;
+}
+.table-wrapper table.display {
+  width: 100%;
+  table-layout: fixed;
+}
+.table-wrapper table.display th,
+.table-wrapper table.display td {
+  max-width: 300px;
+  min-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+@media (max-width: 1100px) {
+  .card {
+    max-width: 99vw;
+    padding-bottom: 10px;
+  }
+  .header-bar, .table-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .header-left {
+    gap: 12px;
+  }
+  .header-title {
+    font-size: 1.2rem;
+  }
+  .header-right {
+    margin-top: 12px;
+    gap: 8px;
+  }
+  .logo-box img {
+    height: 28px;
+    width: 28px;
+  }
+}
+@media (max-width: 700px) {
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 2px 8px 2px;
+  }
+  .header-title {
+    font-size: 1rem;
+  }
+  .header-right {
+    margin-top: 8px;
+    gap: 6px;
+  }
+  .logo-box img {
+    height: 20px;
+    width: 20px;
+  }
+  .table-wrapper {
+    padding: 0 2px 0 2px;
+  }
+}
+
+/* Improve DataTables length dropdown and label */
+.dataTables_wrapper .dataTables_length {
+  margin-bottom: 10px;
+  font-size: 1.13rem;
+  color: #222;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dataTables_wrapper .dataTables_length label {
+  font-size: 1.13rem;
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-right: 8px;
+}
+.dataTables_wrapper .dataTables_length select,
+.dt-length select {
+  margin-right: 10px;
+  font-size: 1.13rem;
+  padding: 6px 18px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  background: #fafafa;
+  color: #222;
+  margin-left: 4px;
+  box-shadow: none;
+  font-weight: 600;
+}
+@media (max-width: 700px) {
+  .dataTables_wrapper .dataTables_length label {
+    font-size: 1.07rem;
+  }
+  .dataTables_wrapper .dataTables_length select {
+    font-size: 1.07rem;
+    height: 32px;
+    padding: 4px 10px;
+  }
+}
+
+/* Dark mode styles */
+[data-theme="dark"] {
+  background: #181a1b;
+  color: #f5f6fa;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body, 
+[data-theme="dark"] html {
+  background: #181a1b !important;
+}
+
+[data-theme="dark"] .card {
+  background: #23272e;
+  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.7);
+  border: 1px solid #292d33;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+[data-theme="dark"] .header-bar,
+[data-theme="dark"] .table-wrapper {
+  background: #23272e;
+}
+
+[data-theme="dark"] .header-title {
+  color: #fff;
+}
+
+[data-theme="dark"] .last-updated {
+  color: #bfc4cc;
+}
+
+[data-theme="dark"] .export-btn {
+  background: #FFCD00;
+  color: #23272e;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
+}
+
+[data-theme="dark"] .export-btn:hover {
+  background: #ffe066;
+  color: #23272e;
+}
+
+[data-theme="dark"] .header-bar-bottom {
+  background: #FFCD00;
+}
+
+[data-theme="dark"] .nav-tabs {
+  border-bottom: 1px solid #292d33;
+}
+
+[data-theme="dark"] .nav-tabs > li > a {
+  background: #23272e;
+  color: #bfc4cc;
+  border: 1px solid transparent;
+  transition: background 0.2s, color 0.2s;
+}
+
+[data-theme="dark"] .nav-tabs > li.active > a,
+[data-theme="dark"] .nav-tabs > li.active > a:hover {
+  background: #292d33;
+  color: #FFCD00;
+  border: 1px solid #292d33;
+}
+
+[data-theme="dark"] .table-wrapper table.display {
+  background: #23272e;
+  color: #f5f6fa;
+}
+
+[data-theme="dark"] .table-wrapper table.display th {
+  background: #23272e;
+  color: #e0e0e0;
+  border-bottom: 2px solid #292d33;
+}
+
+[data-theme="dark"] .table-wrapper table.display td {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .table-wrapper table.display tbody tr {
+  background: #23272e;
+}
+
+[data-theme="dark"] .table-wrapper table.display tbody tr:nth-child(even) {
+  background: #202226;
+}
+
+[data-theme="dark"] .table-wrapper table.display tbody tr:hover {
+  background: #292d33;
+}
+
+/* --- Use mostly default DataTables styles, but unify text color for controls in dark mode --- */
+[data-theme="dark"] .dataTables_wrapper .dataTables_length label,
+[data-theme="dark"] .dataTables_wrapper .dataTables_filter label,
+[data-theme="dark"] .dataTables_wrapper .dataTables_info,
+[data-theme="dark"] .dataTables_wrapper .dataTables_length select,
+[data-theme="dark"] .dataTables_wrapper .dataTables_filter input,
+[data-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button {
+  color: #e0e0e0;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: #222;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: #FFCD00;
+  border: 1px solid #292d33;
+  background: #23272e;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: #292d33;
+  box-shadow: 0 0 0 2px #FFCD0033;
+}
+
+/* Error message styling */
+.error-message {
+  color: #dc3545;
+  padding: 20px;
+  font-weight: 500;
+}
+
+[data-theme="dark"] .error-message {
+  color: #ff6b6b;
+}
+
+/* Dark scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 10px;
+  background: #23272e;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #292d33;
+  border-radius: 6px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #FFCD00;
+}
+
+/* --- Remove all yellow from DataTables in dark mode --- */
+[data-theme="dark"] .table-wrapper table.display th {
+  background: #23272e;
+  color: #e0e0e0;
+  border-bottom: 2px solid #292d33;
+}
+[data-theme="dark"] .table-wrapper table.display td {
+  color: #e0e0e0;
+}
+[data-theme="dark"] .table-wrapper table.display {
+  border: none;
+}
+[data-theme="dark"] .table-wrapper table.display thead tr {
+  border-bottom: 2px solid #292d33;
+}
+[data-theme="dark"] .table-wrapper table.display tbody tr {
+  background: #23272e;
+}
+[data-theme="dark"] .table-wrapper table.display tbody tr:nth-child(even) {
+  background: #202226;
+}
+[data-theme="dark"] .table-wrapper table.display tbody tr:hover {
+  background: #292d33;
+}
+
+/* --- High-contrast and accessibility improvements for dark mode --- */
+[data-theme="dark"] .dataTables_wrapper .dataTables_length label,
+[data-theme="dark"] .dataTables_wrapper .dataTables_filter label,
+[data-theme="dark"] .dataTables_wrapper .dataTables_info {
+  color: #CCCCCC;
+  font-weight: 400;
+}
+[data-theme="dark"] .dataTables_wrapper .dataTables_length select,
+[data-theme="dark"] .dataTables_wrapper .dataTables_filter input {
+  color: #e0e0e0;
+}
+[data-theme="dark"] .table-wrapper table.display tbody tr:hover {
+  background: #2A2A2A;
+  border-left: 2px solid rgba(255,205,0,0.10);
+}
+[data-theme="dark"] .nav-tabs > li > a {
+  color: #B0B0B0;
+  border-bottom: 2px solid transparent;
+}
+[data-theme="dark"] .nav-tabs > li > a:hover {
+  color: #e0e0e0;
+  border-bottom: 2px solid #e0e0e0;
+}
+[data-theme="dark"] .nav-tabs > li.active > a,
+[data-theme="dark"] .nav-tabs > li.active > a:hover {
+  color: #FFCD00;
+  border-bottom: 2px solid #FFCD00;
+}
+[data-theme="dark"] .last-updated {
+  color: #AAAAAA;
+}
+[data-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button {
+  background: #23272e;
+  color: #CCCCCC;
+  border: 1px solid #3a3f47;
+  font-size: 1.05rem;
+  font-weight: 400;
+  opacity: 1;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+[data-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+[data-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: #2E2E2E;
+  color: #fff;
+  border-color: #FFCD00;
+  font-weight: 600;
+}
+
+/* --- DataTables 2.x dark mode accessibility fix --- */
+[data-theme="dark"] .dt-label,
+[data-theme="dark"] .dt-info,
+[data-theme="dark"] .dt-paging,
+[data-theme="dark"] .dt-input,
+[data-theme="dark"] .dt-length label {
+  color: #CCCCCC !important;
+}
+[data-theme="dark"] .dt-input {
+  background: #23272e !important;
+  color: #e0e0e0 !important;
+  border: 1.5px solid #292d33 !important;
+}
+[data-theme="dark"] .dt-paging button,
+[data-theme="dark"] .dt-paging .dt-paging-button {
+  color: #CCCCCC !important;
+  background: #23272e !important;
+  border: 1px solid #3a3f47 !important;
+}
+[data-theme="dark"] .dt-paging .dt-paging-button.current,
+[data-theme="dark"] .dt-paging .dt-paging-button:focus,
+[data-theme="dark"] .dt-paging .dt-paging-button:hover {
+  background: #2E2E2E !important;
+  color: #fff !important;
+  border-color: #FFCD00 !important;
+}
+
+[data-theme="dark"] .dt-search label {
+  color: #CCCCCC !important;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 200px;
+}
+
+[data-theme="dark"] .modal-content {
+  background: #181a1b;
+  color: #fff;
+  border: 1px solid #23272e;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.7);
+}
+[data-theme="dark"] .modal-header {
+  background: linear-gradient(90deg, #FFCD00 0%, #ffe680 100%);
+  color: #23272e;
+  border-bottom: none;
+  margin-bottom: 18px;
+}
+[data-theme="dark"] .modal-title {
+  color: #FFCD00;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+[data-theme="dark"] .modal-header .close {
+  color: #23272e;
+  opacity: 0.8;
+}
+[data-theme="dark"] .modal-body,
+[data-theme="dark"] .topic-detail-label,
+[data-theme="dark"] .topic-detail-value,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .producer-col,
+[data-theme="dark"] .consumer-col {
+  color: #fff !important;
+}
+[data-theme="dark"] .btn-warning {
+  background: #23272e;
+  color: #FFCD00;
+  border: 2px solid #FFCD00;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: none;
+}
+[data-theme="dark"] .btn-warning:hover {
+  background: #353942;
+  color: #ffe066;
+  border-color: #ffe066;
+}
+[data-theme="dark"] .owner-row, [data-theme="dark"] .topic-detail-row {
+  border-bottom: 1px solid #353942;
+  margin-bottom: 18px;
+  padding-bottom: 6px;
+}
+[data-theme="dark"] .side-by-side {
+  gap: 24px;
+  margin-top: 18px;
+}
+[data-theme="dark"] .modal-content .producer-col,
+[data-theme="dark"] .modal-content .consumer-col {
+  background: #181a1b !important;
+  border: 1.5px solid #353942 !important;
+  color: #fff !important;
+}
+[data-theme="dark"] .section-title {
+  color: #FFCD00;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+[data-theme="dark"] .topic-detail-label {
+  color: #ffe066;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+[data-theme="dark"] .topic-detail-value {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.13rem;
+  margin-left: 2px;
+} 

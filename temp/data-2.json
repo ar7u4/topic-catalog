@@ -1,0 +1,64 @@
+[
+    {
+      "topic_name": "Customer-Transaction-Analytics-XYZ123",
+      "platform": [
+        "Analytics Platform"
+      ],
+      "project": [
+        "Transaction Insights",
+        "Customer Behavior Trends"
+      ],
+      "producer_team_spg": [
+        "XYZ_ES_ANALYTICS_CORE"
+      ],
+      "producer_team_email": [
+        "AnalyticsCoreTeam@xyz.com"
+      ],
+      "consumer_team_spg": [
+        "XYZ_Sales_TechSupport",
+        "ABC_DataScience_Support",
+        "LMN_FinOps_Tech",
+        "TCS_DataPlatform_Support",
+        "XYZ_ITSupport_Group",
+        "DEF_Risk_Analytics",
+        "GHJ_ConsumerSupport"
+      ],
+      "consumer_team_email": [
+        "SalesSupport@xyz.com",
+        "DataScienceTeam@xyz.com",
+        "FinOpsSupport@xyz.com",
+        "PlatformSupport@xyz.com",
+        "ITSupport@xyz.com",
+        "RiskTeam@xyz.com",
+        "ConsumerHelp@xyz.com"
+      ],
+      "business_owner": []
+    },
+    {
+      "topic_name": "User-Engagement-Tracking-ABC999",
+      "platform": [
+        "User Analytics"
+      ],
+      "project": [
+        "Engagement Monitoring",
+        "Session Optimization"
+      ],
+      "producer_team_spg": [
+        "ABC_ENGAGEMENT_CORE"
+      ],
+      "producer_team_email": [
+        "EngagementSupport@abc.com"
+      ],
+      "consumer_team_spg": [
+        "Marketing_TechSupport",
+        "UserRetention_Team",
+        "Performance_TechOps"
+      ],
+      "consumer_team_email": [
+        "MarketingHelp@abc.com",
+        "RetentionTeam@abc.com",
+        "TechOpsSupport@abc.com"
+      ],
+      "business_owner": []
+    }
+  ]
